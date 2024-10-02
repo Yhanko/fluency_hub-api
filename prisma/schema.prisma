@@ -1,0 +1,49 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Newslater {
+  id String @id @default(uuid())
+  email String @unique
+  createdAt DateTime @default(now())
+}
+
+
+model Post {
+  id Int @id @default(autoincrement())
+  fullName String
+  content String
+  photo String
+  createdAt   DateTime @default(now())
+}
+
+model Support {
+  id Int @id @default(autoincrement())
+  fullName String
+  email String @unique
+  phone String
+  message String
+  createdAt   DateTime @default(now())
+}
+
+model SignUp {
+  id Int @id @default(autoincrement())
+  fullName String
+  email String @unique
+  phone String
+  identityCard String
+  course Courses
+  createdAt   DateTime @default(now())
+}
+
+enum Courses {
+  ENGLISH
+  SPANISH
+  FRENCH
+}
