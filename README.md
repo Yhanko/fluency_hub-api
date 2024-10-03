@@ -8,15 +8,15 @@ A Fluency Hub foi desenvolvida com o propósito de proporcionar uma experiência
 
 ### Funcionalidades
 
-- **Cursos Personalizados:** A plataforma oferece diferentes níveis de aprendizado, adaptados às necessidades e ao ritmo de cada usuário.
+- **Cursos Personalizados:** A plataforma oferece três diferentes cursos para todos os níveis de aprendizado, adaptados às necessidades e ao ritmo de cada educando.
   
 - **Aulas Interativas:** Métodos inovadores de ensino, como exercícios práticos, quizzes, e simulações de conversação para garantir o progresso contínuo dos alunos.
 
-- **Suporte Multimídia:** Conteúdo rico em vídeo, áudio e texto para melhorar a absorção e prática do idioma em situações reais.
+- **Suporte Multimídia:** Os alunos terão acesso a conteúdo rico em vídeo, áudio e texto para melhorar a absorção e prática do idioma em situações reais.
 
-- **Comunidade Colaborativa:** Uma área de discussão e interação com outros alunos, permitindo o aprendizado colaborativo e o intercâmbio cultural.
+- **Comunidade Colaborativa:** Uma área de discussão e interação com outros alunos, permitindo o aprendizado colaborativo e o intercâmbio cultural por meio da plataforma e das nossas redes sociais.
 
-- **Progresso Acompanhado:** Acompanhamento detalhado do progresso individual, com metas semanais e mensais que ajudam os usuários a manterem-se motivados e focados em seus objetivos.
+- **Progresso Acompanhado:** Acompanhamento detalhado do progresso individual, com metas semanais e mensais que ajudam os educandos a manterem-se motivados e focados em seus objetivos.
 
 ### Tecnologias Utilizadas
 
@@ -35,10 +35,6 @@ O projeto Fluency Hub está aberto para contribuições. Se você deseja colabor
 ### Licença
 
 Este projeto está licenciado sob a Licença **ISC**.
-
----
-
-Essa descrição oferece uma visão clara do propósito, das funcionalidades e das tecnologias envolvidas na construção da **Fluency Hub**, tornando-a adequada tanto para usuários quanto para desenvolvedores interessados no projeto.
 
 
 # Rota para a documentação das rotas da API com os respectivos dados  do body e os tipos
