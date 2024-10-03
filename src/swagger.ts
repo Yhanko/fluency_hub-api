@@ -1,24 +1,34 @@
-import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+import { FastifyInstance } from 'fastify';
+import fastifySwagger from '@fastify/swagger';
+import fastifySwaggerUi from '@fastify/swagger-ui';
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'API de Exemplo',
-      version: '1.0.0',
-      description: 'Documentação da API de Exemplo utilizando Swagger',
-    },
-    servers: [
-      {
-        url: 'http://localhost:4000',
-        description: 'Servidor local',
+export async function swaggerSetup(app: FastifyInstance) {
+
+  app.register(fastifySwagger, {
+    swagger: {
+      info: {
+        title: 'API',
+        description: 'Documentação da API',
+        version: '1.0.0',
       },
-    ],
-  },
-  apis: ['./src/routes/*.ts'],
-};
+      host: 'localhost:4000',
+      schemes: ['http'],
+      consumes: ['application/json'],
+      produces: ['application/json'],
+    },
+  });
 
-const swaggerSpec = swaggerJsdoc(options);
-
-export { swaggerUi, swaggerSpec };
+  app.register(fastifySwaggerUi, {
+    routePrefix: '/documentation', 
+    uiConfig: {
+      docExpansion: 'full',
+      deepLinking: false,
+    },
+    staticCSP: true,
+    transformStaticCSP: (header) => header,
+    transformSpecification: (swaggerObject, request, reply) => {
+      return swaggerObject;
+    },
+    transformSpecificationClone: true,
+  });
+}

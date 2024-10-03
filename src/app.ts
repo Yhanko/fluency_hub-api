@@ -1,37 +1,30 @@
-import express from 'express';
-import routes from './routes'; 
-import { env } from "./config/env";
-import { swaggerUi, swaggerSpec } from './swagger'; 
+import fastify from 'fastify';
+import { signUpRoutes } from './routes/signupRouter.routes';
+import { swaggerSetup } from './swagger';
+import { env } from './config/env';
 import { ZodError } from 'zod';
-import cors from 'cors';
-import { Request, Response,  NextFunction } from "express";
+import fastifyCors from '@fastify/cors';
 
-export const app = express();
+export const app = fastify();
 
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-app.use(routes);
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-app.use(express.json());
-
-app.use((err: Error, request:Request, response:Response, next: NextFunction) => {
-    if (err instanceof ZodError) {
-        return response.status(400).send({ message: 'Validation error.', issues: err.format() });
-    }
-
-    if (env.NODE_ENV !== 'production') {
-        console.error(err);
-    } else {
-        // Utilizar ferramenta de monitoramento para alertas em produção
-    }
+app.register(fastifyCors, {
+  origin: '*',
 });
 
+swaggerSetup(app);
 
+app.register(signUpRoutes);
 
+app.setErrorHandler((error, _, reply) => {
+  if (error instanceof ZodError) {
+    return reply.status(400).send({ message: 'Validation error.', issues: error.format() });
+  }
+
+  if (env.NODE_ENV !== 'production') {
+    console.error(error);
+  } else {
+    // Ferramenta de observação de erros
+  }
+
+  return reply.status(500).send({ message: 'Erro interno no servidor' });
+});

@@ -1,11 +1,11 @@
-import { Request, Response } from "express";
+import { FastifyRequest, FastifyReply} from "fastify";
 import { userSignUpProfileFactory } from "../fatories/signUpfileFatory"; 
 
-export async function userSignUpController(request: Request, response: Response) {
+export async function userSignUpController(request: FastifyRequest, reply: FastifyReply) {
     try {
         
     } catch (err) {
 
-        return response.status(500).json({ message: "Ocorreu um erro ao buscar o perfil do usuário." });
+        return reply.status(500).send({ message: "Ocorreu um erro ao buscar o perfil do usuário." });
     }
 }
