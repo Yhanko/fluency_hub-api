@@ -1,21 +1,17 @@
 import { SignUpRepository } from "../repository/repository"; 
 import { ResourceNotFoundError } from "../../../shared/error/error";
-import { Request, Response} from "../../../interfaces/IsignUp";
-
 export class UserSignUpUseCase {
     constructor(
         private usersRepository: SignUpRepository
     ){}
 
-    async execute({ userId }: Request): Promise<Response> {
-        const user = await this.usersRepository.findById(userId);
+    async execute(id: number) {
+        const user = await this.usersRepository.findById(id);
 
         if(!user) {
-            throw new ResourceNotFoundError();
+            throw new ResourceNotFoundError("User not found");
         }
 
-        return {
-            user
-        }
+        return user
     }
 }

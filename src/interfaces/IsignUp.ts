@@ -1,7 +1,7 @@
 import { Courses, SignUp } from "@prisma/client";
 
 export interface Request{
-    userId: number
+    id: number
 }
 
 export interface Response {

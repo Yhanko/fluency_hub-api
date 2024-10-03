@@ -1,5 +1,8 @@
 import { FastifyInstance } from 'fastify';
 import { signUpController } from "../entidades/signUp/controllers/signUpController";
+import { deleteUserController } from "../entidades/signUp/controllers/deleteSignUpUserController";
+import { userSignUpController } from "../entidades/signUp/controllers/userSignUpController";
+import { getAllUserUController } from "../entidades/signUp/controllers/getAllUserController";
 
 export async function signUpRoutes(app: FastifyInstance) {
     app.post('/signup', {
@@ -39,4 +42,68 @@ export async function signUpRoutes(app: FastifyInstance) {
         },
         handler: signUpController,
     });
+
+    app.delete('/signup/:id', {
+        schema: {
+            params: {
+                type: 'object',
+                properties: {
+                    id: { type: 'number' } 
+                },
+                required: ['id'] 
+            },
+            response: {
+                200: {
+                    description: 'User successfully deleted',
+                    type: 'object',
+                    properties: {
+                        message: { type: 'string' },
+                    },
+                },
+                404: {
+                    description: 'User not found',
+                    type: 'object',
+                    properties: {
+                        error: { type: 'string' },
+                    },
+                },
+            },
+        },  
+        handler: deleteUserController
+    });
+
+    app.get('/signup/:id', {
+        schema: {
+            params: {
+                type: 'object',
+                required: ['id'],
+                properties: {
+                    id: { type: 'number', description: 'The ID of the user to retrieve' },
+                },
+            },
+            response: {
+                200: {
+                    description: 'User found successfully',
+                    type: 'object',
+                    properties: {
+                        message: {
+                            type: 'object',
+                            properties: {
+                                id: { type: 'number', description: 'User ID' },
+                                fullName: { type: 'string', description: 'Full name of the user' },
+                                email: { type: 'string', format: 'email', description: 'User email address' },
+                                phone: { type: 'string', description: 'User phone number' },
+                                identityCard: { type: 'string', description: 'User identity card number' },
+                                course: { type: 'string', description: 'Language course selected by the user' },
+                            },
+                        },
+                    },
+                },
+            },
+            
+        },
+        handler: userSignUpController,
+    });
+
+    app.get('/signup', getAllUserUController)
 }

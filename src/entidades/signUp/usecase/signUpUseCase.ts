@@ -1,4 +1,4 @@
-import { AllReadyExist } from "../../../shared/error/error";
+import { AllReadyExist, BadError } from "../../../shared/error/error";
 import { SignUpRepository } from "../repository/repository";
 import { RequestUser, Response} from "../../../interfaces/IsignUp";
 
@@ -21,6 +21,10 @@ export class SignUpUseCase {
         const user = await this.signUpRepository.signUp({
             fullName, email, phone,  course, identityCard
         });
+
+        if(user instanceof BadError){
+            throw new BadError("User not sign Up");
+        }
 
         return { user }
     }

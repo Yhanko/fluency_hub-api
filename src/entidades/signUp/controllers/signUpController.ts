@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply} from "fastify";
 import z from "zod";
-import { signUpfatory } from "../fatories/userSignUpfatory";
-import { AllReadyExist } from "../../../shared/error/error";
+import { signUpfatory } from "../fatories/signUpfatory";
+import { AllReadyExist, BadError } from "../../../shared/error/error";
 
  export async function signUpController(request: FastifyRequest, reply: FastifyReply){
 
@@ -27,6 +27,10 @@ import { AllReadyExist } from "../../../shared/error/error";
         } catch (error) {
             if(error instanceof AllReadyExist){
                 return reply.status(409).send({ error: error.message });
+            }
+
+            if(error instanceof BadError){
+                reply.status(500).send({error: error.message})
             }
     
             throw error
