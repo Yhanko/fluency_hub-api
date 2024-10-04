@@ -38,4 +38,4 @@ Este projeto está licenciado sob a Licença **ISC**.
 
 
 # Rota para a documentação das rotas da API com os respectivos dados  do body e os tipos
-- http://localhost:4000/documentation
+- https://fluency-hub-api.onrender.com/documentation
