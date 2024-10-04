@@ -37,5 +37,26 @@ O projeto Fluency Hub está aberto para contribuições. Se você deseja colabor
 Este projeto está licenciado sob a Licença **ISC**.
 
 
-# Rota para a documentação das rotas da API com os respectivos dados  do body e os tipos
+# Rota  da API e da documentação das rotas da API com os respectivos dados  do body e os tipos
+# Documentação
 - https://fluency-hub-api.onrender.com/documentation
+
+# Para formulário de Contacto ou suporte
+- GET https://fluency-hub-api.onrender.com/support
+- POST https://fluency-hub-api.onrender.com/support
+- DELETE https://fluency-hub-api.onrender.com/support/:id
+
+# Para formulário de cadastro
+- GET https://fluency-hub-api.onrender.com/signup
+- POST https://fluency-hub-api.onrender.com/signup
+- DELETE https://fluency-hub-api.onrender.com/signup/:id
+- GET https://fluency-hub-api.onrender.com/signup/:id
+
+# Para formulário de comentários ou testemunho
+- GET https://fluency-hub-api.onrender.com/commentary
+- POST https://fluency-hub-api.onrender.com/commentary
+- DELETE https://fluency-hub-api.onrender.com/commentary/:id
+
+# Para formulário de newslater
+- GET https://fluency-hub-api.onrender.com/news
+- POST https://fluency-hub-api.onrender.com/news
