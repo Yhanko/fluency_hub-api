@@ -8,3 +8,4 @@ export async function postRouter(app:FastifyInstance) {
     app.get('/commentary', getAllCommentaryController);
     app.delete('/commentary/:id', deleteCommentaryController);
 }
+
