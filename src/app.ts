@@ -1,9 +1,11 @@
 import fastify from 'fastify';
 import { signUpRoutes } from './routes/signupRouter.routes';
+import { newsRoutes } from "./routes/newslaterRouter.routes"
 import { swaggerSetup } from './swagger';
 import { env } from './config/env';
 import { ZodError } from 'zod';
 import fastifyCors from '@fastify/cors';
+import { supportRoutes } from "./routes/supportRoutes.routes"
 
 export const app = fastify();
 
@@ -13,7 +15,9 @@ app.register(fastifyCors, {
 
 swaggerSetup(app);
 
+app.register(newsRoutes)
 app.register(signUpRoutes);
+app.register(supportRoutes);
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
