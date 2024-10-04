@@ -6,7 +6,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "server": "tsx watch src/server.ts"
+    "server": "tsx watch src/server.ts",
+    "build": "tsup src"
   },
   "keywords": [],
   "author": "Romeu Cajamba",
