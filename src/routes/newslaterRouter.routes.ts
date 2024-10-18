@@ -3,7 +3,7 @@ import { getAllEmailsController } from "../entidades/news/controllers/getAllEmai
 import { registerEmailController } from "../entidades/news/controllers/registerEmailController";
 
 export async function newsRoutes(app: FastifyInstance) {
-    
+
     app.post('/news', {
         schema: {
             summary: 'Register an email for news updates',
@@ -17,7 +17,6 @@ export async function newsRoutes(app: FastifyInstance) {
                         type: 'string', 
                         format: 'email', 
                         description: 'Email address of the user for news updates', 
-                        example: 'user@example.com' 
                     }
                 },
             },
@@ -28,7 +27,6 @@ export async function newsRoutes(app: FastifyInstance) {
                     properties: {
                         message: { 
                             type: 'string', 
-                            example: 'Email registered successfully for news updates' 
                         },
                     },
                 },
@@ -38,7 +36,6 @@ export async function newsRoutes(app: FastifyInstance) {
                     properties: {
                         error: { 
                             type: 'string', 
-                            example: 'Invalid email format' 
                         },
                     },
                 },
@@ -48,7 +45,6 @@ export async function newsRoutes(app: FastifyInstance) {
                     properties: {
                         error: { 
                             type: 'string', 
-                            example: 'Email is already registered' 
                         },
                     },
                 },

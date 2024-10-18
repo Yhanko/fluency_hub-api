@@ -16,23 +16,19 @@ export async function supportRoutes(app: FastifyInstance) {
                     fullName: { 
                         type: 'string', 
                         description: 'Full name of the contact person', 
-                        example: 'Jane Doe' 
                     },
                     email: { 
                         type: 'string', 
                         format: 'email', 
-                        description: 'Email address of the contact person', 
-                        example: 'jane.doe@example.com' 
+                        description: 'Email address of the contact person',  
                     },
                     phone: { 
                         type: 'string', 
                         description: 'Phone number of the contact person', 
-                        example: '+123456789' 
                     },
                     message: { 
                         type: 'string', 
                         description: 'Message or inquiry from the contact', 
-                        example: 'I need help with my account settings.' 
                     }
                 },
             },
@@ -42,8 +38,7 @@ export async function supportRoutes(app: FastifyInstance) {
                     type: 'object',
                     properties: {
                         message: { 
-                            type: 'string', 
-                            example: 'Contact registered successfully' 
+                            type: 'string',  
                         },
                     },
                 },
@@ -53,7 +48,6 @@ export async function supportRoutes(app: FastifyInstance) {
                     properties: {
                         error: { 
                             type: 'string', 
-                            example: 'Invalid email format or missing required fields' 
                         },
                     },
                 },
@@ -73,7 +67,6 @@ export async function supportRoutes(app: FastifyInstance) {
                     id: { 
                         type: 'number', 
                         description: 'The unique ID of the contact request to be deleted',
-                        example: 42 
                     }
                 },
                 required: ['id']
@@ -85,7 +78,6 @@ export async function supportRoutes(app: FastifyInstance) {
                     properties: {
                         message: { 
                             type: 'string', 
-                            example: 'Contact deleted successfully' 
                         },
                     },
                 },
@@ -94,8 +86,7 @@ export async function supportRoutes(app: FastifyInstance) {
                     type: 'object',
                     properties: {
                         error: { 
-                            type: 'string', 
-                            example: 'Contact with ID 42 not found' 
+                            type: 'string',
                         },
                     },
                 },

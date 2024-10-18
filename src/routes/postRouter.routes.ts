@@ -16,18 +16,15 @@ export async function postRoutes(app: FastifyInstance) {
                 properties: {
                     fullName: { 
                         type: 'string', 
-                        description: 'Full name of the person creating the post', 
-                        example: 'John Doe' 
+                        description: 'Full name of the person creating the post',  
                     },
                     content: { 
                         type: 'string', 
                         description: 'Content or commentary of the post', 
-                        example: 'This is my first post!' 
                     },
                     photo: { 
                         type: 'string', 
                         description: 'Optional URL of a photo related to the post', 
-                        example: 'https://example.com/photo.jpg' 
                     }
                 },
             },
@@ -38,7 +35,6 @@ export async function postRoutes(app: FastifyInstance) {
                     properties: {
                         message: { 
                             type: 'string', 
-                            example: 'Post created successfully' 
                         },
                     },
                 },
@@ -48,7 +44,6 @@ export async function postRoutes(app: FastifyInstance) {
                     properties: {
                         error: { 
                             type: 'string', 
-                            example: 'Full name is required' 
                         },
                     },
                 },
@@ -68,7 +63,6 @@ export async function postRoutes(app: FastifyInstance) {
                     id: { 
                         type: 'number', 
                         description: 'The unique ID of the post to be deleted',
-                        example: 42 
                     }
                 },
                 required: ['id']
@@ -80,7 +74,6 @@ export async function postRoutes(app: FastifyInstance) {
                     properties: {
                         message: { 
                             type: 'string', 
-                            example: 'Post deleted successfully' 
                         },
                     },
                 },
@@ -90,7 +83,6 @@ export async function postRoutes(app: FastifyInstance) {
                     properties: {
                         error: { 
                             type: 'string', 
-                            example: 'Post with ID 42 not found' 
                         },
                     },
                 },

@@ -18,30 +18,25 @@ export async function signUpRoutes(app: FastifyInstance) {
                     fullName: { 
                         type: 'string', 
                         description: 'Full name of the user', 
-                        example: 'John Doe' 
                     },
                     email: { 
                         type: 'string', 
                         format: 'email', 
-                        description: 'User email address', 
-                        example: 'john.doe@example.com' 
+                        description: 'User email address',  
                     },
                     phone: { 
                         type: 'string', 
                         description: 'User phone number', 
-                        example: '+123456789' 
                     },
                     identityCard: { 
                         type: 'string', 
                         description: 'User identity card number', 
-                        example: '1234567890' 
                     },
                     course: {
                         type: 'string',
                         enum: ['ENGLISH', 'SPANISH', 'FRENCH'],
                         default: 'ENGLISH',
                         description: 'Language course selected by the user',
-                        example: 'SPANISH'
                     }
                 },
             },
@@ -52,7 +47,6 @@ export async function signUpRoutes(app: FastifyInstance) {
                     properties: {
                         message: { 
                             type: 'string', 
-                            example: 'User registered successfully' 
                         },
                     },
                 },
@@ -62,7 +56,6 @@ export async function signUpRoutes(app: FastifyInstance) {
                     properties: {
                         error: { 
                             type: 'string', 
-                            example: 'User with this email already exists' 
                         },
                     },
                 },
@@ -82,7 +75,6 @@ export async function signUpRoutes(app: FastifyInstance) {
                     id: { 
                         type: 'number', 
                         description: 'The unique ID of the user to be deleted',
-                        example: 1 
                     }
                 },
                 required: ['id'] 
@@ -94,7 +86,6 @@ export async function signUpRoutes(app: FastifyInstance) {
                     properties: {
                         message: { 
                             type: 'string', 
-                            example: 'User deleted successfully' 
                         },
                     },
                 },
@@ -104,7 +95,6 @@ export async function signUpRoutes(app: FastifyInstance) {
                     properties: {
                         error: { 
                             type: 'string', 
-                            example: 'User with ID 1 not found' 
                         },
                     },
                 },
@@ -122,7 +112,6 @@ export async function signUpRoutes(app: FastifyInstance) {
                     id: { 
                         type: 'number', 
                         description: 'The ID of the user to retrieve',
-                        example: 1 
                     },
                 },
             },
@@ -137,33 +126,27 @@ export async function signUpRoutes(app: FastifyInstance) {
                                 id: { 
                                     type: 'number', 
                                     description: 'User ID',
-                                    example: 1 
                                 },
                                 fullName: { 
                                     type: 'string', 
                                     description: 'Full name of the user',
-                                    example: 'John Doe' 
                                 },
                                 email: { 
                                     type: 'string', 
                                     format: 'email', 
-                                    description: 'User email address',
-                                    example: 'john.doe@example.com' 
+                                    description: 'User email address', 
                                 },
                                 phone: { 
                                     type: 'string', 
-                                    description: 'User phone number',
-                                    example: '+123456789' 
+                                    description: 'User phone number', 
                                 },
                                 identityCard: { 
                                     type: 'string', 
                                     description: 'User identity card number',
-                                    example: '1234567890' 
                                 },
                                 course: { 
                                     type: 'string', 
                                     description: 'Language course selected by the user',
-                                    example: 'ENGLISH' 
                                 },
                             },
                         },
