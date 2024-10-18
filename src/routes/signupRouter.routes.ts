@@ -5,21 +5,43 @@ import { userSignUpController } from "../entidades/signUp/controllers/userSignUp
 import { getAllUserUController } from "../entidades/signUp/controllers/getAllUserController";
 
 export async function signUpRoutes(app: FastifyInstance) {
+    
     app.post('/signup', {
         schema: {
+            summary: 'Create a new user registration',
+            description: 'Registers a new user for a specific language course.',
+            tags: ['User Registration'],
             body: {
                 type: 'object',
                 required: ['fullName', 'email', 'phone', 'identityCard', 'course'],
                 properties: {
-                    fullName: { type: 'string', description: 'Full name of the user' },
-                    email: { type: 'string', format: 'email', description: 'User email address' },
-                    phone: { type: 'string', description: 'User phone number' },
-                    identityCard: { type: 'string', description: 'User identity card number' },
+                    fullName: { 
+                        type: 'string', 
+                        description: 'Full name of the user', 
+                        example: 'John Doe' 
+                    },
+                    email: { 
+                        type: 'string', 
+                        format: 'email', 
+                        description: 'User email address', 
+                        example: 'john.doe@example.com' 
+                    },
+                    phone: { 
+                        type: 'string', 
+                        description: 'User phone number', 
+                        example: '+123456789' 
+                    },
+                    identityCard: { 
+                        type: 'string', 
+                        description: 'User identity card number', 
+                        example: '1234567890' 
+                    },
                     course: {
                         type: 'string',
                         enum: ['ENGLISH', 'SPANISH', 'FRENCH'],
                         default: 'ENGLISH',
                         description: 'Language course selected by the user',
+                        example: 'SPANISH'
                     }
                 },
             },
@@ -28,14 +50,20 @@ export async function signUpRoutes(app: FastifyInstance) {
                     description: 'User successfully registered',
                     type: 'object',
                     properties: {
-                        message: { type: 'string' },
+                        message: { 
+                            type: 'string', 
+                            example: 'User registered successfully' 
+                        },
                     },
                 },
                 409: {
                     description: 'User already exists',
                     type: 'object',
                     properties: {
-                        error: { type: 'string' },
+                        error: { 
+                            type: 'string', 
+                            example: 'User with this email already exists' 
+                        },
                     },
                 },
             },
@@ -45,10 +73,17 @@ export async function signUpRoutes(app: FastifyInstance) {
 
     app.delete('/signup/:id', {
         schema: {
+            summary: 'Delete a user by ID',
+            description: 'Deletes a user from the database using their unique ID.',
+            tags: ['User Management'],
             params: {
                 type: 'object',
                 properties: {
-                    id: { type: 'number' } 
+                    id: { 
+                        type: 'number', 
+                        description: 'The unique ID of the user to be deleted',
+                        example: 1 
+                    }
                 },
                 required: ['id'] 
             },
@@ -57,18 +92,24 @@ export async function signUpRoutes(app: FastifyInstance) {
                     description: 'User successfully deleted',
                     type: 'object',
                     properties: {
-                        message: { type: 'string' },
+                        message: { 
+                            type: 'string', 
+                            example: 'User deleted successfully' 
+                        },
                     },
                 },
                 404: {
                     description: 'User not found',
                     type: 'object',
                     properties: {
-                        error: { type: 'string' },
+                        error: { 
+                            type: 'string', 
+                            example: 'User with ID 1 not found' 
+                        },
                     },
                 },
             },
-        },  
+        },
         handler: deleteUserController
     });
 
@@ -78,7 +119,11 @@ export async function signUpRoutes(app: FastifyInstance) {
                 type: 'object',
                 required: ['id'],
                 properties: {
-                    id: { type: 'number', description: 'The ID of the user to retrieve' },
+                    id: { 
+                        type: 'number', 
+                        description: 'The ID of the user to retrieve',
+                        example: 1 
+                    },
                 },
             },
             response: {
@@ -89,18 +134,42 @@ export async function signUpRoutes(app: FastifyInstance) {
                         message: {
                             type: 'object',
                             properties: {
-                                id: { type: 'number', description: 'User ID' },
-                                fullName: { type: 'string', description: 'Full name of the user' },
-                                email: { type: 'string', format: 'email', description: 'User email address' },
-                                phone: { type: 'string', description: 'User phone number' },
-                                identityCard: { type: 'string', description: 'User identity card number' },
-                                course: { type: 'string', description: 'Language course selected by the user' },
+                                id: { 
+                                    type: 'number', 
+                                    description: 'User ID',
+                                    example: 1 
+                                },
+                                fullName: { 
+                                    type: 'string', 
+                                    description: 'Full name of the user',
+                                    example: 'John Doe' 
+                                },
+                                email: { 
+                                    type: 'string', 
+                                    format: 'email', 
+                                    description: 'User email address',
+                                    example: 'john.doe@example.com' 
+                                },
+                                phone: { 
+                                    type: 'string', 
+                                    description: 'User phone number',
+                                    example: '+123456789' 
+                                },
+                                identityCard: { 
+                                    type: 'string', 
+                                    description: 'User identity card number',
+                                    example: '1234567890' 
+                                },
+                                course: { 
+                                    type: 'string', 
+                                    description: 'Language course selected by the user',
+                                    example: 'ENGLISH' 
+                                },
                             },
                         },
                     },
                 },
             },
-            
         },
         handler: userSignUpController,
     });
